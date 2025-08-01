@@ -34,7 +34,11 @@ def generate_comparison_graph(eval_results):
     models = ['Multinomial Naïve Bayes', 'Pruned Decision Tree']
     f1_scores = [0.891, 0.943]
     accuracies = [0.894, 0.948]
-    false_positive_rates = [0.048, 0.021] # Calculated from paper draft info
+    # Extract metrics from eval_results
+    models = list(eval_results.keys())
+    f1_scores = [eval_results[m]['f1_score'] for m in models]
+    accuracies = [eval_results[m]['accuracy'] for m in models]
+    false_positive_rates = [eval_results[m]['false_positive_rate'] for m in models]
 
     x = np.arange(len(models))  # the label locations
     width = 0.25  # the width of the bars
