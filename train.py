@@ -14,7 +14,16 @@ def train_models(X_train, y_train):
     
     # Train and save the Multinomial Naïve Bayes model
     print("Training Multinomial Naïve Bayes...")
-    nb_model = MultinomialNB(alpha=0.1)
+# Hyperparameters
+NB_ALPHA = 0.1  # Smoothing parameter for MultinomialNB; adjust for hyperparameter tuning
+
+def train_models(X_train, y_train):
+    """Trains and saves the Multinomial Naïve Bayes and Pruned Decision Tree classifiers."""
+    print("--- Starting Model Training ---")
+    
+    # Train and save the Multinomial Naïve Bayes model
+    print("Training Multinomial Naïve Bayes...")
+    nb_model = MultinomialNB(alpha=NB_ALPHA)
     nb_model.fit(X_train, y_train)
     joblib.dump(nb_model, 'naive_bayes_model.joblib')
     print("Naïve Bayes model saved as 'naive_bayes_model.joblib'.")
